@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System - Login</title>
+    <link rel="stylesheet" href="/CSS/loginstyle.css">
+
+</head>
+<body>
+    <nav class="navbar">
+        <h1>EVENTSPARK</h1>
+        <ul>
+            <li><a href="/HTML/index.html" class="link active">Home</a></li>
+            <li><a href="/HTML/services.html" class="link">Services</a></li>
+            <li><a href="/HTML/events.html" class="link">Events</a></li>
+            <li><a href="/HTML/register.html" class="active"> Signup</a></li>
+        </ul>
+    </nav>
+    <!-- Form Container -->
+    <div class="container">
+        <form class="form" action=" " method="post">       
+            <h1>LOGIN</h1>
+                <div>
+                    <label for="username"><i class="fa-solid fa-user"></i>Username <span class="required">*</span></label>
+                    <input  class="box" type="text" name="userName" id="userName" onkeydown="return /[A-Za-z0-9_]/i.test(event.key)" required>
+                </div>
+                <div>
+                    <label for="password"><i class="fa-solid fa-lock"></i>Password <span class="required">*</span></label>
+                    <input class="box" id="password" name="password" type="password">
+                </div>
+                <button id="submit" class="login-btn" type="submit" onclick="validateForm()">Login</button>
+                <div class="new-user">
+                        Don't have an account? <span class="bold"><a href="/HTML/register.html">Register</a></span>
+                </div>
+                </form>
+                 <!-- Image Container -->
+            <div class="image-container">
+                <img src="/Images/option image.png" alt="Signup Vector">
+            </div>
+            </div>
+</body>
+</html>

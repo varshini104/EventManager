@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS/eventstyle.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>EVENTSPARK</h1>
+        <ul>
+            <li><a href="/HTML/index.html" class="link active">Home</a></li>
+            <li><a href="/HTML/services.html" class="link">Services</a></li>
+            <li><a href="/HTML/events.html" class="link">Events</a></li>
+            <li><a href="/HTML/register.html" class="active"> Signup</a></li>
+        </ul>
+    </nav>
+    <div class="event">
+        <button type="submit" class="addButton" id="addbutton" >Create Event</button>
+        <button type="submit" class="eventButton" id="eventbutton" >Upcoming Events</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const button = document.getElementById('addbutton');
+            
+            button.addEventListener('click', () => {
+                window.location.href = '/HTML/create event.html'; // Change to your desired URL
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const btn = document.getElementById('eventbutton');
+            
+            btn.addEventListener('click', () => {
+                window.location.href = '/HTML/create event.html'; // Change to your desired URL
+            });
+        });
+    </script>
+</body>
+</html>

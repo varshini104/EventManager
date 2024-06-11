@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Event Form</title>
+<link rel="stylesheet" href="/CSS/create eventstyle.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>EVENTSPARK</h1>
+        <ul>
+            <li><a href="/HTML/index.html" class="link active">Home</a></li>
+            <li><a href="/HTML/services.html" class="link">Services</a></li>
+            <li><a href="/HTML/events.html" class="link">Events</a></li>
+            <li><a href="/HTML/register.html" class="active"> Signup</a></li>
+        </ul>
+    </nav>
+<!--   Create event  -->
+<div class="container">
+  <h2>Create Event</h2>
+  <form id="eventForm" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="eventTitle">Event Title:</label>
+      <input type="text" id="eventTitle" name="eventTitle" required>
+    </div>
+    <div class="form-group">
+      <label for="eventDescription">Event Description:</label>
+      <textarea id="eventDescription" name="eventDescription" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="eventDate">Date:</label>
+      <input type="date" id="eventDate" name="eventDate" required>
+    </div>
+    <div class="form-group">
+      <label for="eventTime">Time:</label>
+      <input type="time" id="eventTime" name="eventTime" required>
+    </div>
+    <div class="form-group">
+      <label for="brochure">Brochure:</label>
+      <input type="file" id="brochure" name="brochure" accept=".pdf,.doc,.docx" required>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required>
+    </div>
+    <div class="form-group">
+      <label for="attendees">Attendees:</label>
+      <input type="text" id="attendees" name="attendees" placeholder="Enter email addresses separated by commas" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('eventForm');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); 
+        const eventTitle = document.getElementById('eventTitle').value.trim();
+        const eventDescription = document.getElementById('eventDescription').value.trim();
+        const eventDate = document.getElementById('eventDate').value;
+        const eventTime = document.getElementById('eventTime').value;
+        const brochure = document.getElementById('brochure').files[0];
+        const location = document.getElementById('location').value.trim();
+        const attendees = document.getElementById('attendees').value.trim();
+
+        // Check required fields are not empty
+        if (!eventTitle || !eventDescription || !eventDate || !eventTime || !brochure || !location || !attendees) {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        // Check valid date and time
+        const currentDate = new Date().toISOString().split('T')[0];
+        if (eventDate < currentDate) {
+            alert('Please select a future date.');
+            return;
+        }
+
+        // Check attendees emails
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const attendeeList = attendees.split(',');
+        for (let email of attendeeList) {
+            email = email.trim();
+            if (!emailPattern.test(email)) {
+                alert(`Invalid email address: ${email}`);
+                return;
+            }
+        }
+        window.location.href = '/HTML/index.html'; 
+    });
+});
+
+
+</script>
+</body>
+</html>
